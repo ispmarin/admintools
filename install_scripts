@@ -1,0 +1,11 @@
+#! /bin/bash
+SRC_FOLDER="$HOME/profissional/projetos/admintools/src/*"
+VENV_FOLDER=$HOME/.local/bin/
+
+for filename in ${SRC_FOLDER}
+  do
+    find -L "$VENV_FOLDER" -maxdepth 1 -type l -delete
+    ln -sf "${filename}" "${VENV_FOLDER}"
+  done
+
+chmod u+rwx "${VENV_FOLDER}"
