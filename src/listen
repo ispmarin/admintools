@@ -12,8 +12,10 @@ set -e
 
 module=$(pactl load-module module-loopback latency_msec=10)
 
+echo "$module" > /tmp/listen.module
+
 function cleanup {
-  pactl unload-module $module
+  pactl unload-module "$module"
 }
 
 trap cleanup EXIT

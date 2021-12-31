@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+module=$(cat /tmp/listen.module)
+
+pactl unload-module "$module"
+
