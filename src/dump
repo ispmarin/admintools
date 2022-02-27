@@ -1,0 +1,10 @@
+#!/bin/bash
+
+systemctl --host kioto.tunguska.cc stop soapyremote-server
+
+systemctl --host kioto.tunguska.cc start dump1090-fa
+systemctl --host kioto.tunguska.cc start dump978-fa
+
+
+systemctl --host kioto.tunguska.cc status dump1090-fa
+systemctl --host kioto.tunguska.cc status dump978-fa
