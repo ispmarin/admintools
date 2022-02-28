@@ -1,0 +1,18 @@
+#!/bin/bash
+
+git init
+git remote add origin $REPO
+
+# Execute/uncomment one of the following 3 lines unless a .gitignore with '/**' already exists in the repo
+git config --local status.showUntrackedFiles no
+# echo '/**' >> .git/info/exclude
+# echo '/**' >> .gitignore; git add -f .gitignore
+
+# If first-time push to empty repo, add and commit some files, then:
+git push -u origin HEAD
+
+# Otherwise, if this is first-time pull from non-empty repo
+# Set or replace $BRANCH with your branch name: master, main, base, dev, or other of your choosing
+git fetch --set-upstream origin $BRANCH
+git switch --no-overwrite-ignore $BRANCH # Complains if files of same name already exist
+git switch -f $BRANCH # Only do this if you are comfortable overwriting existing files
