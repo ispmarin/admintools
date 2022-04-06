@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Directs audio input (e.g. mic) to audio output (e.g. speakers),
 # then sleeps forever. Stops audio redirection when it is killed.

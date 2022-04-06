@@ -1,11 +1,13 @@
 #!/bin/bash
-USERNAME="<username>"
-PASSWORD="<password>"
-HOSTNAME="<FQDN>"
+
 
 # Resolve current public IP
 IP=$( dig +short myip.opendns.com @resolver1.opendns.com )
 # Update Google DNS Record
-URL="https://${USERNAME}:${PASSWORD}@domains.google.com/nic/update?hostname=${HOSTNAME}&myip=${IP}"
-curl -s $URL
-echo " done."
+if [[ -z "${USERNAME}" && "${PASSWORD}" && "${DOMAIN}" ]]; then
+  URL="https://${USERNAME}:${PASSWORD}@domains.google.com/nic/update?hostname=${DOMAIN}&myip=${IP}"
+  curl -s "$URL"
+  echo " done."
+else 
+  echo "Please define the variables USENAME, PASSWORD and DOMAIN for your Google account."
+fi

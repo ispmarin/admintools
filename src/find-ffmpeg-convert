@@ -1,3 +1,8 @@
 #!/bin/bash
 
-for i in $(find . -name "*.gif" -print0| xargs -0); do ffmpeg -y -i "$i" -vcodec h264 -acodec mp3 "${i%.gif}".mp4; done
+# Convert video files with extension EXTENSION to H264, MP3 and mp4 extension.
+if [[ -z "${EXTENSION}" ]]; then
+  for i in $(find . -name "*.${EXTENSION}" -print0| xargs -0); do ffmpeg -y -i "$i" -vcodec h264 -acodec mp3 "${i%."${EXTENSION}"}".mp4; done
+else
+  echo "Please define the environment variable EXTENSION with the video file extension to be converted."
+fi
