@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Idea and scripts came from here: https://www.atlassian.com/git/tutorials/dotfiles and
+# here: https://dev.to/bowmanjd/store-home-directory-config-files-dotfiles-in-git-using-bash-zsh-or-powershell-the-bare-repo-approach-35l3
+
 git init
 git remote add origin $REPO
 

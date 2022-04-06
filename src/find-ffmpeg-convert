@@ -1,0 +1,3 @@
+#!/bin/bash
+
+for i in $(find . -name "*.gif" -print0| xargs -0); do ffmpeg -y -i "$i" -vcodec h264 -acodec mp3 "${i%.gif}".mp4; done

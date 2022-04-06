@@ -7,11 +7,12 @@ github: github.com/eshaan7
 						 WHAT THE SCRIPT DOES:
 	You download a TV show from torrent and find the suitable subtitle files from some website.
 	Renaming every subtitle file to match the video file is a pain in the ass, isn't it?
-	That's where this script comes in handyy
+	That's where this script comes in handy
 '''
 
 import os
 #import msvcrt
+
 
 def menu():
 	print("\t"+"*"*8+"MENU"+"*"*8)
@@ -24,7 +25,8 @@ def menu():
 	choice = int(input("\n\tEnter choice(1-3): "))
 	return choice
 
-def diff_path(): #choice=2
+
+def diff_path():
 	vid_path = str(input("Full path to video directory(example: /home/...): "))
 	sub_path = str(input("Full path to subtitles directory(example: /home/...): "))
 	sub_format = str(input("Extension of subtitle files(ex: .sub, .srt, etc): "))
@@ -38,6 +40,7 @@ def diff_path(): #choice=2
 			subFiles.append(name)
 	rename_files(sub_path, vidFiles, subFiles, sub_format)
 	return 
+
 
 def same_path(): #choice=1
 	dir_path = str(input("Full path to video directory(example: /home/...): "))
@@ -53,6 +56,7 @@ def same_path(): #choice=1
 	rename_files(dir_path, vidFiles, subFiles, sub_format)
 	return
 
+
 def for_current_dir(): #choice=3
 	dir_path = os.getcwd()
 	dirFiles = os.listdir(dir_path)
@@ -66,6 +70,7 @@ def for_current_dir(): #choice=3
 			subFiles.append(name)
 	rename_files(dir_path, vidFiles, subFiles, sub_format)
 	return
+
 
 def rename_files(path, vidFiles, subFiles, sub_format):
 	vidFiles.sort(key=lambda f: int(''.join(filter(str.isdigit, f))))
@@ -82,6 +87,7 @@ def rename_files(path, vidFiles, subFiles, sub_format):
 	#print("\nPress Q to Quit")
 	#msvcrt.getch()
 	return 
+
 
 def main():
 	choice = menu()
