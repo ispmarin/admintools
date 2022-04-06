@@ -1,13 +1,12 @@
 #! /bin/bash
-SRC_FOLDER="$HOME/profissional/projetos/admintools/src/*"
-VENV_FOLDER=$HOME/.local/bin/
 
-chmod u+rwx "${SRC_FOLDER}"
+export SRC_FOLDER="$HOME/profissional/projetos/admintools/src/*"
+export BIN_FOLDER="$HOME/.local/bin/"
 
 for filename in ${SRC_FOLDER}
   do
-    find -L "$VENV_FOLDER" -maxdepth 1 -type l -delete
-    ln -sf "${filename}" "${VENV_FOLDER}"
+    find -L "$BIN_FOLDER" -maxdepth 1 -type l -delete
+    ln -sf "${filename}" "${BIN_FOLDER}"
   done
 
-chmod u+rwx "${VENV_FOLDER}"
+chmod u+rwx "${BIN_FOLDER}"
