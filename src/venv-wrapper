@@ -38,4 +38,13 @@ rmvenv() {
   fi
 }
 
+upvenv() {
+  if [ $# -eq 0 ]
+    then
+      echo "Please provide venv name"
+    else
+      pip3 list --root "${VENV_HOME}" --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install --root "${VENV_HOME}" -U
+  fi
+}
+
 complete -W "$(lsvenv)" venv
