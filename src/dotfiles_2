@@ -1,19 +1,21 @@
 #!/bin/bash
 
-DOTFILES=$HOME/.dotfiles
+export DOTFILES=$HOME/.dotfiles
+export TEMP_CONFIG="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+export CONFIG_COMM="alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'"
 
-git clone --bare git@github.com:ispmarin/dotfiles.git "$DOTFILES"
-function config {
-   /usr/bin/git --git-dir="$DOTFILES" --work-tree="$HOME" "$@"
-}
+if [[ ! -d "${DOTFILES}" ]]; then
 
-mkdir -p .config-backup
-config checkout
-if [ $? = 0 ]; then
-  echo "Checked out config.";
-  else
-    echo "Backing up pre-existing dot files.";
-    config checkout 2>&1 | grep -E "\s+\." | awk "{'print $1'}" | xargs -I{} mv {} .config-backup/{}
-fi;
-config checkout
-config config status.showUntrackedFiles no
+    git clone --bare git@github.com:ispmarin/dotfiles.git "$DOTFILES"
+
+fi
+
+# grep -qxF "${CONFIG_COMM}" "${HOME}/.bashrc" || echo "${CONFIG_COMM}" >> "${HOME}/.bashrc"
+
+
+TEMP_CONFIG stash
+TEMP_CONFIG stash branch `hostname`
+TEMP_CONFIG push `hostname`
+
+TEMP_CONFIG checkout
+TEMP config status.showUntrackedFiles no
