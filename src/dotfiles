@@ -1,21 +1,29 @@
 #!/bin/bash
 
-# Idea and scripts came from here: https://www.atlassian.com/git/tutorials/dotfiles and
-# here: https://dev.to/bowmanjd/store-home-directory-config-files-dotfiles-in-git-using-bash-zsh-or-powershell-the-bare-repo-approach-35l3
+DOTFILES=$HOME/.dotfiles
+CONFIG_COMM="alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'"
 
-git init
-git remote add origin $REPO
+function config () {
+	/usr/bin/git --git-dir="${DOTFILES}" --work-tree="${HOME}" "$@"
+}
 
-# Execute/uncomment one of the following 3 lines unless a .gitignore with '/**' already exists in the repo
-git config --local status.showUntrackedFiles no
-# echo '/**' >> .git/info/exclude
-# echo '/**' >> .gitignore; git add -f .gitignore
+if [[ ! -d "${DOTFILES}" ]]; then
 
-# If first-time push to empty repo, add and commit some files, then:
-git push -u origin HEAD
+    git clone --bare git@github.com:ispmarin/dotfiles.git "${DOTFILES}"
 
-# Otherwise, if this is first-time pull from non-empty repo
-# Set or replace $BRANCH with your branch name: master, main, base, dev, or other of your choosing
-git fetch --set-upstream origin $BRANCH
-git switch --no-overwrite-ignore $BRANCH # Complains if files of same name already exist
-git switch -f $BRANCH # Only do this if you are comfortable overwriting existing files
+fi
+
+# grep -qxF "${CONFIG_COMM}" "${HOME}/.bashrc" || echo "${CONFIG_COMM}" >> "${HOME}/.bashrc"
+
+config config status.showUntrackedFiles no
+
+if [ config checkout = 0 ]; then
+    echo "Checked out config"
+  else
+    echo "Backing up existing dotfiles"
+    config stash clear 
+    config stash
+    config stash branch "$(hostname)_$(date '+%Y%m%d%H%M%S')"
+fi;
+
+config checkout master
