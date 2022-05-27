@@ -1,17 +1,29 @@
 #!/bin/bash
 
-REPO=git@github.com:ispmarin/dotfiles.git
-BRANCH=master
+DOTFILES=$HOME/.dotfiles
+CONFIG_COMM="alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'"
 
-git init
-git remote add origin $REPO
+function config () {
+	/usr/bin/git --git-dir="${DOTFILES}" --work-tree="${HOME}" "$@"
+}
 
-git config --local status.showUntrackedFiles no
-echo '/**' >> .git/info/exclude
-echo '/**' >> .gitignore; git add -f .gitignore
+if [[ ! -d "${DOTFILES}" ]]; then
 
-git push -u origin HEAD
+    git clone --bare git@github.com:ispmarin/dotfiles.git "${DOTFILES}"
 
-git fetch --set-upstream origin $BRANCH
-git switch --no-overwrite-ignore $BRANCH 
-git switch -f $BRANCH
+fi
+
+# grep -qxF "${CONFIG_COMM}" "${HOME}/.bashrc" || echo "${CONFIG_COMM}" >> "${HOME}/.bashrc"
+
+config config status.showUntrackedFiles no
+
+if [ config checkout = 0 ]; then
+    echo "Checked out config"
+  else
+    echo "Backing up existing dotfiles"
+    config stash clear 
+    config stash
+    config stash branch "$(hostname)_$(date '+%Y%m%d%H%M%S')"
+fi;
+
+config checkout master
