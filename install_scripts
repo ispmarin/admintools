@@ -3,6 +3,10 @@
 export SRC_FOLDER="$HOME/profissional/projetos/admintools/src/*"
 export BIN_FOLDER="$HOME/.local/bin/"
 
+if [ ! -d "${BIN_FOLDER}" ]; then
+  mkdir -p "${BIN_FOLDER}"
+fi
+
 for filename in ${SRC_FOLDER}
   do
     find -L "$BIN_FOLDER" -maxdepth 1 -type l -delete
