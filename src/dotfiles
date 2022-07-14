@@ -17,7 +17,7 @@ fi
 
 config config status.showUntrackedFiles no
 
-if [ config checkout = 0 ]; then
+if [[ config checkout = 0 ]]; then
     echo "Checked out config"
   else
     echo "Backing up existing dotfiles"

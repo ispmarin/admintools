@@ -4,7 +4,7 @@ SERVICE_PATH=/data/services/
 
 if [ $# -eq 1 ]
     then
-      (cd ${SERVICE_PATH}/"$1" && docker-compose pull && docker-compose up -d --remove-orphans && sleep 3 && docker-compose logs)
+      (cd ${SERVICE_PATH}/"$1" && docker-compose pull && docker-compose up -d --remove-orphans ) 
     else
       echo "Please provide container base folder"
 fi
