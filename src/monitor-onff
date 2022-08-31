@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -z "$DISPLAY" ]; then
+	DISPLAY=":0"
+fi
+
+xset -display $DISPLAY dpms force off
+sleep 1
+xset -display $DISPLAY dpms force on

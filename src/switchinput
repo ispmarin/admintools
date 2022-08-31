@@ -1,0 +1,5 @@
+#!/bin/sh
+
+BIN_PATH=/Users/imarin/.local/bin/
+
+${BIN_PATH}/m1ddc display 1 set input 15

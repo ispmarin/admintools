@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo pass vpnusp | sudo /usr/sbin/openconnect vpn.semfio.usp.br --user=3284632 --passwd-on-stdin

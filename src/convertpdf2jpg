@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ $# -eq 2 ]; then
+    pdftoppm -jpeg -r 300 "$1" "$2"
+else
+    printf "Please provide the PDF file and the output file:\n convertpdf2jpg input.pdf output_file.jpg"
+fi

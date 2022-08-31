@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr/bin/virsh start "$1" &
+/usr/bin/virt-viewer -w "$1" &

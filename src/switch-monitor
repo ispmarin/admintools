@@ -1,0 +1,13 @@
+#!/bin/bash
+
+MODULE=i2c_dev
+
+if lsmod | grep -wq "^${MODULE}" &> /dev/null ; then
+  # shift from DP-1 to USB-C
+  sudo ddcutil setvcp 0x60 x1b
+  exit 0
+else
+  echo "$MODULE is not loaded. Please load it"
+  exit 1
+fi
+

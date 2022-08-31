@@ -1,0 +1,5 @@
+/Users/imarin/Documents
+/Users/imarin/Pictures
+/Users/imarin/projetos
+/Users/imarin/.ssh
+/Users/imarin/.config

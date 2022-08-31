@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source osaka.env
+
+/opt/homebrew/bin/restic backup --verbose --files-from ./backup_paths.txt

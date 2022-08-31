@@ -1,0 +1,29 @@
+#!/bin/bash
+
+DOTFILES=$HOME/.dotfiles
+CONFIG_COMM="alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'"
+
+function config () {
+	/usr/bin/git --git-dir="${DOTFILES}" --work-tree="${HOME}" "$@"
+}
+
+if [[ ! -d "${DOTFILES}" ]]; then
+
+    git clone --bare git@github.com:ispmarin/dotfiles.git "${DOTFILES}"
+
+fi
+
+# grep -qxF "${CONFIG_COMM}" "${HOME}/.bashrc" || echo "${CONFIG_COMM}" >> "${HOME}/.bashrc"
+
+config config status.showUntrackedFiles no
+
+if [[ config checkout = 0 ]]; then
+    echo "Checked out config"
+  else
+    echo "Backing up existing dotfiles"
+    config stash clear 
+    config stash
+    config stash branch "$(hostname)_$(date '+%Y%m%d%H%M%S')"
+fi;
+
+config checkout master

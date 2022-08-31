@@ -1,0 +1,5 @@
+#!/bin/bash
+
+wg genkey | tee privatekey | wg pubkey > publickey
+echo "privatekey" && cat privatekey
+echo "publickey" && cat publickey

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source backblaze.env
+
+/opt/homebrew/bin/restic backup --verbose -o b2.connections=20 --files-from ./backup_paths.txt
