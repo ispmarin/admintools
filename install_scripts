@@ -1,6 +1,6 @@
 #! /bin/bash
 
-export SRC_FOLDER="$HOME/projetos/admintools/src/*"
+export SRC_FOLDER="$HOME/profissional/projetos/admintools/src/*"
 export BIN_FOLDER="$HOME/.local/bin/"
 
 if [ ! -d "${BIN_FOLDER}" ]; then
@@ -9,8 +9,7 @@ fi
 
 for filename in ${SRC_FOLDER}
   do
-    find -L "$BIN_FOLDER" -maxdepth 1 -type l -delete
-    ln -sf "${filename}" "${BIN_FOLDER}"
+    cp -rf "${filename}" "${BIN_FOLDER}"
   done
 
-chmod u+rwx "${BIN_FOLDER}"
+chmod u+rwx "${BIN_FOLDER}/*"

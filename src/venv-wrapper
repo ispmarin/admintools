@@ -48,3 +48,4 @@ upvenv() {
 }
 
 #complete -W "$(lsvenv)" venv
+
