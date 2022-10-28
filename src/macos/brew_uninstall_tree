@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 if [ -z "$1" ]
   then
@@ -6,4 +6,3 @@ if [ -z "$1" ]
   else
     brew ls --full-name --formula | grep '^$1' | xargs brew uninstall
 fi
-
