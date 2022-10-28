@@ -5,8 +5,8 @@ TARGET=/srv/backup/chiba/imarin
 TODAY=$(date +%Y-%m-%d)
 EXCLUDES=
 
-rsync -avAXEWSlHh --no-compress --info=progress2 --delete "${SOURCE}"  "${TARGET}${TODAY}/" --link-dest="${TARGET}last/"
+rsync -avAXEWSlHh --no-compress --info=progress2 --delete "${SOURCE}"  "${TARGET}-${TODAY}/" --link-dest="${TARGET}-last/"
 
-ln -nsf "${TARGET}${TODAY}" "${TARGET}last"
+ln -nsf "${TARGET}-${TODAY}" "${TARGET}-last"
 
 exit 0
