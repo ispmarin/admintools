@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+import argparse
+import datetime
+import shlex
+import subprocess
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-c", "--container", help="Container name to be backed up", required=True
+    )
+    parser.add_argument(
+        "-b",
+        "--backup",
+        help="Folder where to store backed up files",
+        default="/srv/backup/services",
+    )
+    parser.add_argument(
+        "-a", "--app", help="Folder inside container to be backed up", required=True
+    )
+
+    args = parser.parse_args()
+    comm = shlex.split(
+        f"docker run --rm --volumes-from {args.container} -v {args.backup}:/tmp/backup ubuntu tar cvfz /tmp/backup/backup-{datetime.datetime.now().isoformat()}.tar.gz {args.app} "
+    )
+    subprocess.run(comm)
