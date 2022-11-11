@@ -1,0 +1,5 @@
+for I in *.mp3
+do
+    mpg123 --cdr - "$I" | cdrecord -audio -pad -nofix -
+done
+cdrecord -fix
