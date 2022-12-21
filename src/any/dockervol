@@ -21,6 +21,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     comm = shlex.split(
-        f"docker run --rm --volumes-from {args.container} -v {args.backup}:/tmp/backup ubuntu tar cvfz /tmp/backup/backup-{datetime.datetime.now().isoformat()}.tar.gz {args.app} "
+        f"""docker run --rm --volumes-from {args.container} 
+            -v {args.backup}:/tmp/backup ubuntu tar cvfz 
+            /tmp/backup/backup-{datetime.datetime.now().isoformat()}.tar.gz {args.app} 
+        """
     )
     subprocess.run(comm)

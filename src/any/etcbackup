@@ -3,7 +3,6 @@
 SOURCE=/etc
 TARGET=/srv/backup/osaka/etc
 TODAY=$(date +%Y-%m-%d)
-EXCLUDES=
 
 rsync -avAXEWSlHh --no-compress --info=progress2 --delete "${SOURCE}"  "${TARGET}-${TODAY}/" --link-dest="${TARGET}-last/"
 

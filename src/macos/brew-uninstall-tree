@@ -4,5 +4,5 @@ if [ -z "$1" ]
   then
     echo "Please pass the brew tap"
   else
-    brew ls --full-name --formula | grep '^$1' | xargs brew uninstall
+    brew ls --full-name --formula | grep "^$1" | xargs brew uninstall
 fi

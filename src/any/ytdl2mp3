@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -z "$1" ];
+ then
+  youtube-dl -x --audio-format mp3 "$1"
+else
+  echo "Please provide URL of the YT video or playlist"
+fi

@@ -13,17 +13,8 @@ if [[ ! -d "${DOTFILES}" ]]; then
 
 fi
 
-# grep -qxF "${CONFIG_COMM}" "${HOME}/.bashrc" || echo "${CONFIG_COMM}" >> "${HOME}/.bashrc"
+grep -qxF "${CONFIG_COMM}" "${HOME}/.bashrc" || echo "${CONFIG_COMM}" >> "${HOME}/.bashrc"
 
 config config status.showUntrackedFiles no
-
-if [[ config checkout = 0 ]]; then
-    echo "Checked out config"
-  else
-    echo "Backing up existing dotfiles"
-    config stash clear 
-    config stash
-    config stash branch "$(hostname)_$(date '+%Y%m%d%H%M%S')"
-fi;
 
 config checkout master

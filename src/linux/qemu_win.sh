@@ -6,4 +6,4 @@ qemu-system-x86_64 --enable-kvm -drive driver=raw,file=~/vm/win10.img,if=virtio 
 -drive file=${VIRTIMG},index=3,media=cdrom \
 -rtc base=localtime,clock=host -smp cores=4,threads=8 \
 -usb -device usb-tablet \
--net user,smb=$HOME
+-net user,smb="$HOME"
