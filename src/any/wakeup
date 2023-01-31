@@ -1,0 +1,18 @@
+#!/bin/sh
+
+TOKIOMAC=A8:5E:45:1E:77:9E
+KIOTOMAC=B8:27:EB:10:84:83
+OSAKAMAC=48:4D:7E:FC:2E:3D
+
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied"
+    exit
+fi
+
+case $1 in
+  tokio) wakeonlan $TOKIOMAC;;
+  kioto) wakeonlan $KIOTOMAC;;
+  osaka) wakeonlan $OSAKAMAC;;
+  *) echo "Please select an existing server";;
+esac
