@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if ! type youtube-dl > /dev/null; then
+    echo "Please install youtube-dl"
+  exit
+fi
+
+if [ -z ${PLAYLIST_URL+x} ]; then
+    echo "PLAYLIST_URL is unset";
+    exit
+fi
+
+youtube-dl --get-id "$PLAYLIST_URL" | xargs -I '{}' -P 5 youtube-dl -x --audio-format mp3 'https://youtube.com/watch?v={}'
