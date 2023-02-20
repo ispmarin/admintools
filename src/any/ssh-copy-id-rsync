@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cat ~/.ssh/id_ed25519.pub | ssh zh2753@zh2753.rsync.net 'dd of=.ssh/authorized_keys oflag=append conv=notrunc'
