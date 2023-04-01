@@ -1,0 +1,5 @@
+!/bin/sh bash
+
+sudo launchctl unload /Library/LaunchDaemons/com.zerotier.one.plist
+rm -rf "/Library/Application\ Support/ZeroTier/One/identity.*"
+sudo launchctl load /Library/LaunchDaemons/com.zerotier.one.plist
