@@ -1,0 +1,9 @@
+Package: admintools
+Version: 2.2
+Section: custom
+Priority: optional
+Architecture: all
+Essential: no
+Installed-Size: 1024
+Maintainer: tunguska.cc
+Description: Tools to automate repetitive tasks
