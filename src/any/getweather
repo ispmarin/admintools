@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl wttr.in/São+Carlos?format="%l,+%T:+%C++%t++%h++%p++%w++%P\n"

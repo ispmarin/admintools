@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if ! command -v nmap &> /dev/null
+then
+    echo "nmap could not be found. Install it with apt install nmap"
+    exit
+fi
+
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied. Please provide host to be scanned"
+fi
+
+
+sudo nmap -sVA -Pn --script vuln,auth,discovery,brute,http-malware-host --version-all --resolve-all --osscan-guess "$1" -oX "/tmp/nmap_{$1}.txt"
