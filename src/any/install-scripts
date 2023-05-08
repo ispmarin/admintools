@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 export SRC_FOLDER="$HOME/profissional/projetos/admintools/src/*"
 export BIN_FOLDER="$HOME/.local/bin/"

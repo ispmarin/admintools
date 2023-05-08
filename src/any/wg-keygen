@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 wg genkey | tee privatekey | wg pubkey > publickey
 echo "privatekey" && cat privatekey

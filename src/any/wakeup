@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 TOKIOMAC=A8:5E:45:1E:77:9E
 KIOTOMAC=B8:27:EB:10:84:83

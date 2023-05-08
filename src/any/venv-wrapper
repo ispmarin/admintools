@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 # $ mkvenv myvirtualenv # creates venv
 # $ venv myvirtualenv   # activates venv
 # $ deactivate          # deactivates venv

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DOTFILES=$HOME/.dotfiles
 CONFIG_COMM="alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'"

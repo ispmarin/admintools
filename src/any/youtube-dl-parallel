@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 if ! type youtube-dl > /dev/null; then
     echo "Please install youtube-dl"

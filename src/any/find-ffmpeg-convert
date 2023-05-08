@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Convert video files with extension EXTENSION to H264, MP3 and mp4 extension.
 if [[ -z "${EXTENSION}" ]]; then
